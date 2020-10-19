@@ -1,0 +1,250 @@
+ //Bài 1
+    class Stack
+    {
+        private int top;
+        private int[] s;
+        public Stack()
+        {
+            top = -1;
+            s = new int[20];
+        }
+        public Stack(int n)
+        {
+            top = -1;
+            s = new int[n];
+
+        }
+        public bool Full()
+        {
+            return top == s.Length - 1;
+        }
+        public bool Empty()
+        {
+            return top == -1;
+        }
+        public void Push(int x)
+        {
+            if (Full()) Console.WriteLine("Stack day");
+            else s[++top] = x;
+        }
+        public int Pop()
+        {
+            if (Empty()) throw new Exception("Stack rong");
+            else
+            {
+                int x = s[top--];
+                return x;
+            }
+        }
+    }
+    class Hexa
+    {
+        private int n;
+        private Stack s;
+        public void NHAP()
+        {
+
+            Console.Write("Nhap so nguyen n=");
+            n = int.Parse(Console.ReadLine());
+
+        }
+        public void Chuyencoso()
+        {
+            s = new Stack();
+            string st = "0123456789ABCDEF";
+            while (n != 0)
+            {
+                s.Push((int)st[n % 16]);
+                n = n / 16;
+            }
+            while (!s.Empty())
+                Console.Write((char)s.Pop());
+
+        }
+
+    }
+
+    
+        }
+{
+    //Bài 2
+    class PS
+    {
+        private int ts, ms;
+        public PS()
+        {
+            ts = 0;
+            ms = 2;
+        }
+        public PS(int ts,int ms)
+        {
+            this.ts = ts;
+            this.ms = ms;
+        }
+        public PS(PS t)
+        {
+            this.ts = t.ts;
+            this.ms = t.ms;
+        }
+        public PS Tong(PS t2)
+        {
+            PS t = new PS();
+            t.ts = this.ts * t2.ms + this.ms * t2.ts;
+            t.ms = this.ms * t2.ms;
+            return t;
+        }
+        public PS Hieu(PS t2)
+        {
+            PS t = new PS();
+            t.ts = this.ts * t2.ms - this.ms * t2.ts;
+            t.ms = this.ms * t2.ms;
+            return t;
+        }
+        public PS Tich(PS t2)
+        {
+            PS t = new PS();
+            t.ts = this.ts * t2.ts;
+            t.ms = this.ms * t2.ms;
+            return t;
+        }
+        public PS Thuong(PS t2)
+        {
+            PS t = new PS();
+            t.ts = this.ts * t2.ms;
+            t.ms = this.ms * t2.ts;
+            return t;
+        }
+        public void Kiemtra(PS t2)
+        {
+            if (this.ts * t2.ms == this.ms * t2.ts)
+                Console.WriteLine("2 phan so bang nhau");
+            else
+                Console.WriteLine("2 phan so khong bang nhau");
+        }
+        public void Hien()
+        {
+            if (ms == 1)
+                Console.WriteLine("{0}", ts);
+            else
+                Console.WriteLine("{0}/{1}", ts, ms);
+        }
+        public int Uscln(int x,int y)
+        {
+            x = Math.Abs(x);
+            y = Math.Abs(y);
+            while(x!=y)
+            {
+                if (x > y) x = x - y;
+                if (y > x) y = y - x;
+            }
+            return x;
+        }
+        public PS Rutgon()
+        {
+            int uc = Uscln(this.ts, this.ms);
+            this.ts = this.ts / uc;
+            this.ms = this.ms / uc;
+            return this;
+        }
+    //bai 3
+    class Queue
+    {
+        private int dau, cuoi;
+        private int[] q;
+        public Queue()
+        {
+            dau = cuoi = 0;
+            q = new int[20];
+        }
+        public Queue(int n)
+        {
+            dau = cuoi = 0;
+            q = new int[n];
+
+        }
+        public bool isFull()
+        {
+            return cuoi >= q.Length - 1;
+        }
+        public bool isEmpty()
+        {
+            return dau == 0;
+        }
+        public void Push(int x)
+        {
+            if (isFull()) Console.WriteLine("Stack day");
+            else
+            {
+                cuoi++;
+                q[cuoi] = x;
+            }
+        }
+        public int Pop()
+        {
+            if (isEmpty()) throw new Exception("Stack rong");
+            else
+            {
+                int x = q[dau];
+                dau--;
+                return x;
+            }
+        }
+    }
+}
+//Bài 4
+class DaThuc
+     {
+        private int n;
+        private double x;
+        private double[] a;
+        public DaThuc()
+        {
+            n = 0;
+            a = null;
+        }
+        public DaThuc(int bac)
+        {
+            n = bac;
+            a = new double[n];
+        }
+        public void Nhap()
+        {
+            Console.WriteLine("Nhap he so=");
+            n = Convert.ToInt16(Console.ReadLine());
+            Console.Write("Nhap x=");
+            x = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Nhap he s=");
+            a = new double[n];
+            for (int i = 0, i> n, i++)
+                Console.Write("a[{0}]", i);
+            a[i] = Convert.ToDouble(Console.ReadLine()); 
+        }
+        public DaThuc Tong(DaThuc t2)
+        {
+        if (this.n == t2.n)
+        {
+            T.a[i] = this.a[i] + t2.a[i];
+            return Tong;
+
+        }
+        else
+            return null;
+        }
+
+}
+
+// bài 5
+class Data
+{
+    private int day, month, year;
+    public Data(DateTime dt)
+    {
+        day = dt.Day;
+        month = dt.Month;
+        year = dt.Year;
+    }
+    public void Hien()
+    {
+        Console.WriteLine("{0}/{1}/{2}", month, day, year);
+    }
+}
